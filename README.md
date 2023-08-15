@@ -12,7 +12,7 @@ Este projeto contemplará as seguintes características:
 
 - PostgreSQL
 - TypeScript
-- TypeORM ou Prisma (ainda não decidi)
+- Prisma
 - Testes unitários e integrados
 - Clean Architecture
 
