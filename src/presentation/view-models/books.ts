@@ -5,13 +5,17 @@ export class BooksViewModel {
   title: string;
   ISBN: string;
   description: string;
-  pageNumber: number;
+  pageCount: number;
   publishDate: string;
 
   public static map(entity: Book): BooksViewModel {
     return {
-      ...entity,
-      publishDate: entity.publishDate.toISOString()
+      id: entity.id,
+      title: entity.title,
+      ISBN: entity.ISBN,
+      description: entity.description,
+      publishDate: entity.publish_date.toISOString(),
+      pageCount: entity.page_count,
     };
   }
 

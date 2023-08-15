@@ -48,6 +48,7 @@ model Book {
   description  String         @db.VarChar(5000)
   cover        String?        @db.VarChar(500)
   ISBN         String         @db.VarChar(13)
+  page_count   Int            @default(0)
   Announcement Announcement[]
 
   @@map("books")

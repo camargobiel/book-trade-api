@@ -1,10 +1,10 @@
 import { Book } from '@/domain/entities/book';
 import { AllBooksLoader } from '@/domain/usecases';
-import { LoadAllBooksRepository } from '@/data/interfaces';
+import { IBooksRepository } from '@/data/interfaces';
 
 export class AllBooksLoaderService implements AllBooksLoader {
   constructor(
-    private readonly loadAllBooksRepository: LoadAllBooksRepository
+    private readonly loadAllBooksRepository: IBooksRepository
   ) {}
 
   async load(): Promise<Book[]> {

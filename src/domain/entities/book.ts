@@ -1,8 +1,9 @@
-export interface Book {
+export type Book = {
   id: string;
   title: string;
-  ISBN: string;
   description: string;
-  pageNumber: number;
-  publishDate: Date;
+  ISBN: string;
+  page_count: number;
+  publish_date?: Date;
+  cover?: string;
 }

@@ -1,9 +1,9 @@
 import { AllBooksLoaderService } from '@/data/services';
-import { LoadAllBooksRepository } from '@/data/interfaces';
+import { IBooksRepository } from '@/data/interfaces';
 
 describe('AllBooksLoaderService Suites', () => {
   let sut: AllBooksLoaderService;
-  let loadAllBooksRepository: LoadAllBooksRepository;
+  let loadAllBooksRepository: IBooksRepository;
 
   beforeEach(() => {
     loadAllBooksRepository = {

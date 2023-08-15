@@ -10,7 +10,9 @@
     "start": "pnpm build && nodemon --exec ts-node src/main/server.ts",
     "build": "rimraf dist && tsc",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "prisma:migrate": "pnpm prisma migrate dev",
+    "prisma:format": "pnpm prisma format"
   },
   "repository": {
     "type": "git",
@@ -34,6 +36,7 @@
     "@types/node": "^20.5.0",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
+    "client": "link:@types/@prisma/client",
     "eslint": "^8.0.1",
     "eslint-config-standard-with-typescript": "^37.0.0",
     "eslint-plugin-import": "^2.25.2",
@@ -48,6 +51,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "@prisma/client": "5.1.1",
     "express": "^4.18.2"
   }
 }
