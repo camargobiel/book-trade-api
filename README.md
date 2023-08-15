@@ -8,12 +8,12 @@ Ideia essa que foi totalmente desenvolvida utilizando PHP, HTML e CSS puro.
 
 Porém, anos se passaram, muito estudo e conhecimento me foi agregado, e decidi refazer a parte do servidor do projeto.
 
-Este projeto contemplará as seguintes tecnologias:
+Este projeto contemplará as seguintes características:
 
 - PostgreSQL
 - TypeScript
 - TypeORM ou Prisma (ainda não decidi)
 - Testes unitários e integrados
-- Arquitetura favorável para o projeto (ainda não decidi)
+- Clean Architecture
 
 Este projeto servirá de estudo, então ficaria feliz, se caso você que estiver lendo isso possa me dar dicas de como posso melhorá-lo.
