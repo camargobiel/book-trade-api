@@ -2,10 +2,10 @@
   "name": "book-trade-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec ts-node src/index.ts"
+    "start": "nodemon dist/main/server.js",
+    "build": "rimraf dist && tsc"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/camargobiel/book-trade-api/issues"
+  },
+  "_moduleAliases": {
+    "@": "dist"
   },
   "homepage": "https://github.com/camargobiel/book-trade-api#readme",
   "devDependencies": {
@@ -30,7 +33,10 @@
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
     "eslint-plugin-promise": "^6.0.0",
     "jest": "^29.6.2",
+    "module-alias": "^2.2.3",
     "nodemon": "^3.0.1",
+    "prisma": "^5.1.1",
+    "rimraf": "^5.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   },
