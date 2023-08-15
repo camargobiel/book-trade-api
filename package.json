@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "prisma": {
+    "schema": "src/infra/prisma/schema.prisma"
+  },
   "scripts": {
     "start": "pnpm build && nodemon --exec ts-node src/main/server.ts",
     "build": "rimraf dist && tsc"

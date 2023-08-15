@@ -9,3 +9,80 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id                    String         @id @default(uuid())
+  name                  String         @db.VarChar(500)
+  email                 String         @unique @db.VarChar(250)
+  password              String         @db.VarChar(100)
+  birth_date            DateTime
+  profile_picture       String?        @db.VarChar(500)
+  bought_books_quantity Int?           @default(0)
+  created_at            DateTime       @default(now())
+  updated_at            DateTime       @updatedAt
+  Address               Address[]
+  Announcement          Announcement[]
+
+  @@map("users")
+}
+
+model Address {
+  id           String  @id @default(uuid())
+  zip_code     String  @db.VarChar(10)
+  street       String  @db.VarChar(250)
+  number       String  @db.VarChar(10)
+  neighborhood String? @db.VarChar(250)
+  city         String  @db.VarChar(250)
+  state        String  @db.VarChar(2)
+
+  user_id String @db.VarChar(36)
+  User    User   @relation(fields: [user_id], references: [id])
+
+  @@map("addresses")
+}
+
+model Book {
+  id           String         @id @default(uuid())
+  title        String         @db.VarChar(500)
+  publish_date DateTime?
+  description  String         @db.VarChar(5000)
+  cover        String?        @db.VarChar(500)
+  ISBN         String         @db.VarChar(13)
+  Announcement Announcement[]
+
+  @@map("books")
+}
+
+enum AnnouncementsStatus {
+  DRAFT
+  PUBLISHED
+  FINISHED
+  CANCELED
+}
+
+model Announcement {
+  id          String              @id @default(uuid())
+  title       String              @db.VarChar(500)
+  status      AnnouncementsStatus @default(DRAFT)
+  description String              @db.VarChar(5000)
+  created_at  DateTime            @default(now())
+  updated_at  DateTime            @updatedAt
+
+  book_id String @db.VarChar(36)
+  Book    Book   @relation(fields: [book_id], references: [id])
+
+  user_id             String                @db.VarChar(36)
+  User                User                  @relation(fields: [user_id], references: [id])
+  AnnouncementPicture AnnouncementPicture[]
+
+  @@map("announcements")
+}
+
+model AnnouncementPicture {
+  id              String       @id @default(uuid())
+  picture         String       @db.VarChar(500)
+  announcement_id String       @db.VarChar(36)
+  Announcement    Announcement @relation(fields: [announcement_id], references: [id])
+
+  @@map("announcement_pictures")
+}
