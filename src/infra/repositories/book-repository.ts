@@ -8,11 +8,10 @@ export class BookRepository implements LoadAllBooksRepository {
       {
         id: '1',
         title: 'title',
-        editor: 'editor',
-        picture: 'picture',
-        authors: ['author1', 'author2'],
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        description: 'description',
+        ISBN: 'ISBN',
+        pageNumber: 1,
+        publishDate: new Date(),
       },
     ];
   }
