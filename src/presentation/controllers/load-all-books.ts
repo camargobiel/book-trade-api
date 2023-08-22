@@ -11,10 +11,11 @@ export class LoadAllBooksController implements Controller<BookModel[]> {
     private readonly allBooksLoader: AllBooksLoader
   ) {}
 
-  async handle (req: Request, res: Response): Promise<Response<BookModel[], Record<string, BookModel[]>>> {
+  async handle (req: Request, res: Response) {
     try {
       const allBooks = await this.allBooksLoader.load();
-      return res.status(HTTP_STATUS.OK).json(BooksViewModel.mapCollection(allBooks));
+      const booksViewModel = BooksViewModel.mapCollection(allBooks);
+      return res.status(HTTP_STATUS.OK).json(booksViewModel);
     } catch (err) {
       const { statusCode, body } = handleError(err);
       return res.status(statusCode).json(body);

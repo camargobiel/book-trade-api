@@ -1,6 +1,6 @@
 import { CreateBookService } from '.';
 import { BookRepositoryMock } from '@/main/__mocks__/books-repository';
-import { CreateBookParams } from '../interfaces';
+import { CreateBookParams } from '@/data/interfaces';
 
 describe('CreateBooksService Suites', () => {
   let sut: CreateBookService;

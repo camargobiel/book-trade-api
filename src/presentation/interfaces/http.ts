@@ -4,3 +4,7 @@ export interface HTTPErrorHandlerResponse {
     message: string;
   };
 }
+
+export interface ErrorBody {
+  message: string;
+}
