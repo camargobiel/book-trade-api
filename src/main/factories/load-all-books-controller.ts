@@ -7,6 +7,5 @@ export const makeLoadAllBooksController = (): Controller => {
   const repository = new BooksRepository();
   const loader = new AllBooksLoaderService(repository);
   const controller = new LoadAllBooksController(loader);
-
   return controller;
 };

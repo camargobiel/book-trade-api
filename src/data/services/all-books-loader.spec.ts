@@ -3,19 +3,13 @@ import { IBooksRepository } from '@/data/interfaces';
 
 describe('AllBooksLoaderService Suites', () => {
   let sut: AllBooksLoaderService;
-  let loadAllBooksRepository: IBooksRepository;
-
-  beforeEach(() => {
-    loadAllBooksRepository = {
-      loadAllBooks: jest.fn(),
-    };
-  });
-
-  beforeEach(() => {
-    sut = new AllBooksLoaderService(loadAllBooksRepository);
-  });
+  let BooksRepository: IBooksRepository;
 
   describe('Success', () => {
+    beforeEach(() => {
+      sut = new AllBooksLoaderService(BooksRepository);
+    });
+
     it('should return a list of books', async () => {
       const mock = [
         {
@@ -27,7 +21,7 @@ describe('AllBooksLoaderService Suites', () => {
           publishDate: new Date('2007-04-01T00:00:00'),
         }
       ];
-      (loadAllBooksRepository.loadAllBooks as jest.Mock).mockReturnValue(mock);
+      (BooksRepository.loadAllBooks as jest.Mock).mockReturnValue(mock);
       const result = await sut.load();
       expect(result).toEqual([
         {
@@ -43,7 +37,7 @@ describe('AllBooksLoaderService Suites', () => {
 
     it('should return an empty array if no books are found', async () => {
       const mock = [];
-      (loadAllBooksRepository.loadAllBooks as jest.Mock).mockReturnValue(mock);
+      (BooksRepository.loadAllBooks as jest.Mock).mockReturnValue(mock);
       const result = await sut.load();
       expect(result).toEqual([]);
     });

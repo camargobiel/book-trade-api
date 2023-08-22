@@ -1,4 +1,4 @@
-export type Book = {
+export class Book {
   id: string;
   title: string;
   description: string;
@@ -6,4 +6,8 @@ export type Book = {
   page_count: number;
   publish_date?: Date;
   cover?: string;
+
+  constructor(params: Book) {
+    Object.assign(this, params);
+  }
 }

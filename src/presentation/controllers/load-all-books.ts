@@ -1,24 +1,23 @@
 import { AllBooksLoader } from '@/domain/usecases';
-import { HTTPResponse, serverError, ok, ErrorStack } from '@/presentation/interfaces';
 import { Controller } from '@/presentation/interfaces/controller';
 import { BooksViewModel } from '@/presentation/view-models';
+import { HTTP_STATUS } from '../constants';
+import { BookModel } from '@/data/models';
+import { Request, Response } from 'express';
+import { handleError } from '../errors';
 
-export class LoadAllBooksController implements Controller {
+export class LoadAllBooksController implements Controller<BookModel[]> {
   constructor(
     private readonly allBooksLoader: AllBooksLoader
   ) {}
 
-  async handle (req: unknown, res: unknown): Promise<
-    HTTPResponse<BooksViewModel[] | ErrorStack>
-  > {
-    console.log('res', res);
-    console.log('req', req);
-
+  async handle (req: Request, res: Response): Promise<Response<BookModel[], Record<string, BookModel[]>>> {
     try {
       const allBooks = await this.allBooksLoader.load();
-      return ok(BooksViewModel.mapCollection(allBooks));
+      return res.status(HTTP_STATUS.OK).json(BooksViewModel.mapCollection(allBooks));
     } catch (err) {
-      return serverError(err as Error);
+      const { statusCode, body } = handleError(err);
+      return res.status(statusCode).json(body);
     }
   }
 }

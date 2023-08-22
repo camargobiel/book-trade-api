@@ -1,16 +1,6 @@
-export type HTTPResponse<T = unknown> = {
+export interface HTTPErrorHandlerResponse {
   statusCode: number;
-  body: T;
+  body: {
+    message: string;
+  };
 }
-
-export type ErrorStack = string | undefined
-
-export const serverError = (error: Error): HTTPResponse<ErrorStack> =>({
-  statusCode: 500,
-  body: error.stack
-});
-
-export const ok = <T = unknown>(data: T): HTTPResponse<T> =>({
-  statusCode: 500,
-  body: data
-});

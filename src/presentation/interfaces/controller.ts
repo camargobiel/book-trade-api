@@ -1,5 +1,5 @@
-import { HTTPResponse } from '@/presentation/interfaces';
+import { Request, Response } from 'express';
 
-export interface Controller {
-  handle: (req: unknown, res: unknown) => Promise<HTTPResponse>
+export interface Controller<T = unknown> {
+  handle: (req: Request, res: Response) => Promise<Response<T, Record<string, T>>>
 }
