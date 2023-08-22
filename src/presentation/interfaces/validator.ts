@@ -1,5 +1,7 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
+import { ValidationChain } from 'express-validator';
 
 export interface Validator {
-  validate(req: Request, res: Response): void;
+  body: ValidationChain[];
+  validateOrThrow(): (req: Request, res: Response, next: NextFunction) => void;
 }
