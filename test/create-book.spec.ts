@@ -34,9 +34,8 @@ describe('POST /books', () => {
           title: 'Diário de um banana',
           ISBN: '9788498672220',
           description: 'O livro é sobre um menino chamado Greg Heffley e suas tentativas de se tornar popular.',
-          page_count: 224,
-          publish_date: '2007-04-01T03:00:00.000Z',
-          cover: null
+          pageCount: 224,
+          publishDate: '2007-04-01T03:00:00.000Z',
         }
       );
     });
