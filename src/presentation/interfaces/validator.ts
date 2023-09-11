@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-import { ValidationChain } from 'express-validator';
+import { ContextRunner } from 'express-validator';
+import { Middleware } from 'express-validator/src/base';
 
 export interface Validator {
-  body: ValidationChain[];
+  body: Middleware & ContextRunner;
   validateOrThrow(): (req: Request, res: Response, next: NextFunction) => void;
 }

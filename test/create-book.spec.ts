@@ -124,6 +124,25 @@ describe('POST /books', () => {
           ]);
         });
       });
+
+      it('should throw error if send a not expected field', async () => {
+        const response = await request(app).post('/api/books').send(
+          {
+            title: 'Diário de um banana',
+            description: 'O livro é sobre um menino chamado Greg Heffley e suas tentativas de se tornar popular.',
+            pageCount: 224,
+            publishDate: new Date('2007-04-01T00:00:00'),
+            notExpectedField: 'not expected field',
+            ISBN: '9788498672220',
+          }
+        );
+        expect(response.status).toBe(400);
+        expect(response.body).toEqual([
+          {
+            message: 'Unknown field(s)',
+          },
+        ]);
+      });
     });
   });
 });
