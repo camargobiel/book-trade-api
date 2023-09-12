@@ -1,9 +1,8 @@
 import { Book } from '@prisma/client';
-import { BookModel } from '../models';
-
-export type CreateBookParams = Omit<BookModel, 'id'>
+import { CreateBookParams } from '@/data/dtos/create-book';
 
 export interface IBooksRepository {
-  loadAllBooks: () => Promise<Book[]>
   createBook: (book: CreateBookParams) => Promise<Book>
+  loadAllBooks: () => Promise<Book[]>
+  loadBookById: (id: string) => Promise<Book>
 }
